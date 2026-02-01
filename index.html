@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy 6 Months Bashar</title>
+<style>
+  body {
+    margin: 0;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background-color: #ffe6f0;
+    overflow-x: hidden;
+    text-align: center;
+  }
+
+  /* Pink heart border */
+  body::before, body::after {
+    content: "💖💖💖💖💖💖💖💖💖💖";
+    position: fixed;
+    width: 100%;
+    left: 0;
+    font-size: 2rem;
+    color: pink;
+  }
+
+  body::before { top: 0; }
+  body::after { bottom: 0; }
+
+  /* Centered heart surprise */
+  #heart {
+    font-size: 8rem;
+    color: pink;
+    margin-top: 20vh;
+    cursor: pointer;
+    transition: transform 0.3s;
+  }
+
+  #heart:hover {
+    transform: scale(1.1);
+  }
+
+  /* Pink notepad */
+  #notepad {
+    display: none;
+    width: 80%;
+    max-width: 350px;
+    padding: 20px;
+    margin: 50px auto;
+    background-color: #ffb6c1;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  /* Floating hearts */
+  .floating-heart {
+    position: absolute;
+    font-size: 1.2rem;
+    color: pink;
+    opacity: 0.7;
+    animation: floatUp 6s linear infinite;
+  }
+
+  @keyframes floatUp {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0.7;}
+    100% { transform: translateY(-600px) rotate(360deg); opacity: 0;}
+  }
+
+  /* Mobile adjustments */
+  @media (max-width: 500px) {
+    #heart {
+      font-size: 5rem;
+      margin-top: 15vh;
+    }
+
+    #notepad {
+      font-size: 0.9rem;
+      padding: 15px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- First screen -->
+<div id="surpriseText">
+  <h1>I have a surprise for you</h1>
+  <div id="heart">💗</div>
+</div>
+
+<!-- Second screen -->
+<div id="notepad">
+  <p>Happy 6 months Bashar ❤️<br>
+  I love you so much, more to come!<br>
+  We will prove everything and everyone wrong that doubted our love together 💖<br>
+  Mwah qalbi 😘</p>
+</div>
+
+<script>
+  const heart = document.getElementById('heart');
+  const notepad = document.getElementById('notepad');
+  const surpriseText = document.getElementById('surpriseText');
+
+  heart.addEventListener('click', () => {
+    surpriseText.style.display = 'none';
+    notepad.style.display = 'block';
+    createFloatingHearts();
+  });
+
+  function createFloatingHearts() {
+    for (let i = 0; i < 20; i++) {
+      const heart = document.createElement('div');
+      heart.classList.add('floating-heart');
+      heart.style.left = Math.random() * window.innerWidth + 'px';
+      heart.style.top = window.innerHeight + 'px';
+      heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+      document.body.appendChild(heart);
+      animateHeart(heart);
+    }
+  }
+
+  function animateHeart(heart) {
+    const duration = Math.random() * 5 + 5; // 5-10 seconds
+    heart.style.animationDuration = duration + 's';
+  }
+</script>
+
+</body>
+</html>
